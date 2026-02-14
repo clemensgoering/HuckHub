@@ -29,14 +29,7 @@ One request, one JSON file, no tracking, no telemetry.
 
 ```
 huckhub-registry/
-├── modules.json          ← The registry manifest (fetched by HuckHub)
-└── changelogs/           ← Per-module changelogs (linked, not fetched)
-    ├── BSM.md
-    ├── SWS.md
-    ├── PTB.md
-    ├── WAS.md
-    ├── RS.md
-    └── CPS.md
+└── modules.json     ← The registry manifest (fetched by HuckHub)
 ```
 
 ### modules.json
@@ -45,7 +38,7 @@ The manifest contains three sections:
 
 **`schemaVersion`** — Integer for forward compatibility. HuckHub checks this before parsing.
 
-**`modules`** — Array of module entries. Each entry describes one package:
+**`modules`** — Array of module entries:
 
 | Field | Purpose |
 |---|---|
@@ -56,28 +49,23 @@ The manifest contains three sections:
 | `minUnityVersion` | Minimum supported Unity version |
 | `assetStoreUrl` | Direct link to the Asset Store listing |
 | `documentationUrl` | Link to documentation |
-| `changelogUrl` | Link to the changelog in this repo |
 | `requiredDependencies` | Packages the module needs (e.g. `"GC2 Core"`) |
 | `optionalDependencies` | Other Huck modules that add synergies |
 
 **`announcements`** — Array of brief messages displayed on the Hub welcome page. Each entry has a `title`, `body`, optional `url`, and a `type` (`"info"` or `"warning"`). This covers release notes, compatibility notices, deprecations, or any other communication — without needing additional endpoints or files.
 
-### Changelogs
-
-The `changelogs/` folder contains markdown files linked from `changelogUrl` in the manifest. These are not fetched by HuckHub — they open in the browser when the user clicks "Changelog" in the Hub. This keeps the JSON payload small and avoids loading content that most users won't read in-editor.
-
 ## Module ecosystem
 
-| Abbr | Module | Description |
-|---|---|---|
-| BSM | Buff Status Effect Manager | Buffs, debuffs, DoT, HoT, stacking, immunities, auras |
-| SWS | Spawn & Wave System | Wave-based spawning, object pooling, entity tracking |
-| PTB | Progression Tree Builder | Skill trees, progression paths, visual tree editor |
-| WAS | World Activity System | World events, activities, temporal scheduling |
-| RS | Relationship System | Factions, diplomacy, reputation, NPC relations |
-| CPS | Companion System | AI companions, follow, commands, formations *(in development)* |
+| Abbr | Module | Version | Description |
+|---|---|---|---|
+| PTB | Progression Tree Builder | 1.2.0 | Skill trees, progression paths, visual node editor |
+| BSM | Buff Status Effect Manager | 1.0.0 | Buffs, debuffs, DoT, HoT, stacking, immunities, auras |
+| SWS | Spawn & Wave System | 1.0.0 | Wave-based spawning, object pooling, entity tracking |
+| WAS | World Activity System | 1.0.0 | World events, activities, temporal scheduling |
+| RS | Relationship System | 1.0.0 | Factions, diplomacy, reputation, NPC relations |
+| CPS | Companion System | 0.1.0 | AI companions, follow, commands, formations *(in development)* |
 
-All modules are built for Game Creator 2 and designed to work independently. Cross-module integrations (e.g. BSM buffs triggered by RS reputation changes) activate automatically when both modules are present.
+All modules are built for Game Creator 2 and designed to work independently. Cross-module integrations activate automatically when both modules are present.
 
 ## For module developers
 
@@ -87,7 +75,7 @@ If you are building a module that should appear in HuckHub:
 2. Create a class implementing `IHuckModule` with a parameterless constructor
 3. That's it — `TypeCache` handles the rest
 
-The interface requires basic metadata (name, version, description, dependencies) and an optional `GetStatusMessage()` for runtime health checks. See the `BSMModuleInfo.example.cs` in the HuckHub package for a complete reference implementation.
+The interface requires basic metadata (name, version, description, dependencies) and an optional `GetStatusMessage()` for runtime health checks. See the `ModuleInfos/` folder in the HuckHub package for reference implementations of all current modules.
 
 To appear in the "Available" section for users who don't have your module installed, add an entry to `modules.json` in this repository.
 
