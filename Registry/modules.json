@@ -1,0 +1,85 @@
+{
+    "schemaVersion": 1,
+    "modules": [
+        {
+            "abbreviation": "BSM",
+            "displayName": "Buff Status Effect Manager",
+            "description": "Buffs, Debuffs, DoT, HoT, Stacking, Immunities, Auras",
+            "latestVersion": "1.0.0",
+            "minUnityVersion": "2021.3",
+            "assetStoreUrl": "",
+            "documentationUrl": "https://c-huck.com/bsm",
+            "changelogUrl": "https://github.com/c-huck/huckhub-registry/blob/main/changelogs/BSM.md",
+            "requiredDependencies": ["GC2 Core", "GC2 Stats"],
+            "optionalDependencies": ["RS", "SWS"]
+        },
+        {
+            "abbreviation": "SWS",
+            "displayName": "Spawn & Wave System",
+            "description": "Wave-based Spawning, Object Pooling, Entity Tracking",
+            "latestVersion": "1.0.0",
+            "minUnityVersion": "2021.3",
+            "assetStoreUrl": "",
+            "documentationUrl": "https://c-huck.com/sws",
+            "changelogUrl": "https://github.com/c-huck/huckhub-registry/blob/main/changelogs/SWS.md",
+            "requiredDependencies": ["GC2 Core"],
+            "optionalDependencies": ["BSM"]
+        },
+        {
+            "abbreviation": "PTB",
+            "displayName": "Progression Tree Builder",
+            "description": "Skill Trees, Progression, Visual Tree Editor",
+            "latestVersion": "1.0.0",
+            "minUnityVersion": "2021.3",
+            "assetStoreUrl": "",
+            "documentationUrl": "https://c-huck.com/ptb",
+            "changelogUrl": "https://github.com/c-huck/huckhub-registry/blob/main/changelogs/PTB.md",
+            "requiredDependencies": ["GC2 Core"],
+            "optionalDependencies": ["BSM"]
+        },
+        {
+            "abbreviation": "WAS",
+            "displayName": "World Activity System",
+            "description": "World Events, Activities, Temporal Scheduling",
+            "latestVersion": "1.0.0",
+            "minUnityVersion": "2021.3",
+            "assetStoreUrl": "",
+            "documentationUrl": "https://c-huck.com/was",
+            "changelogUrl": "https://github.com/c-huck/huckhub-registry/blob/main/changelogs/WAS.md",
+            "requiredDependencies": ["GC2 Core"],
+            "optionalDependencies": ["BSM", "SWS"]
+        },
+        {
+            "abbreviation": "RS",
+            "displayName": "Relationship System",
+            "description": "Factions, Diplomacy, Reputation, NPC Relations",
+            "latestVersion": "1.0.0",
+            "minUnityVersion": "2021.3",
+            "assetStoreUrl": "",
+            "documentationUrl": "https://c-huck.com/rs",
+            "changelogUrl": "https://github.com/c-huck/huckhub-registry/blob/main/changelogs/RS.md",
+            "requiredDependencies": ["GC2 Core"],
+            "optionalDependencies": ["BSM", "CPS"]
+        },
+        {
+            "abbreviation": "CPS",
+            "displayName": "Companion System",
+            "description": "AI Companions, Follow, Commands, Formations, Persistence",
+            "latestVersion": "0.1.0",
+            "minUnityVersion": "2021.3",
+            "assetStoreUrl": "",
+            "documentationUrl": "https://c-huck.com/cps",
+            "changelogUrl": "",
+            "requiredDependencies": ["GC2 Core"],
+            "optionalDependencies": ["BSM", "RS"]
+        }
+    ],
+    "announcements": [
+        {
+            "title": "CPS in Development",
+            "body": "The Companion System is currently in active development. Stay tuned for updates.",
+            "url": "https://c-huck.com/roadmap",
+            "type": "info"
+        }
+    ]
+}
